@@ -11,7 +11,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - .pgdata:/var/lib/postgresql/data
+      - .docker/pgdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=codepix
@@ -74,6 +74,6 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@user.com
       - PGADMIN_DEFAULT_PASSWORD=123456
     ports:
-      - "9000:80"
+      - "9001:80"
     depends_on:
       - db
