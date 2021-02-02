@@ -2,9 +2,10 @@ package model
 
 import (
 	"errors"
+	"time"
+
 	"github.com/asaskevich/govalidator"
 	uuid "github.com/satori/go.uuid"
-	"time"
 )
 
 type PixKeyRepositoryInterface interface {
@@ -17,11 +18,11 @@ type PixKeyRepositoryInterface interface {
 
 type PixKey struct {
 	Base      `valid:"required"`
-	Kind      string   `json:"kind" valid:"notnull"`
-	Key       string   `json:"key" valid:"notnull"`
-	AccountID string   `json:"account_id" valid:"notnull"`
+	Kind      string   `json:"kind" gorm:"type:varchar(20)" valid:"notnull"`
+	Key       string   `json:"key" gorm:"type:varchar(255)" valid:"notnull"`
+	AccountID string   `gorm:"column:account_id;type:uuid;not null" valid:"-"`
 	Account   *Account `valid:"-"`
-	Status    string   `json:"status" valid:"notnull"`
+	Status    string   `json:"status" gorm:"type:varchar(20)" valid:"notnull"`
 }
 
 func (pixKey *PixKey) isValid() error {

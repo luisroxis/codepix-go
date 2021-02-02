@@ -5,7 +5,7 @@ import (
 
 	uuid "github.com/satori/go.uuid"
 
-	"github.com/victordev13/fullcycle-codepix/domain/model"
+	"github.com/luisroxis/codepix-go/domain/model"
 
 	"github.com/stretchr/testify/require"
 )
